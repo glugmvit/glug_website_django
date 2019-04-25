@@ -6,7 +6,6 @@ from django.contrib import auth
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
-#from django.contrib.auth import authenticate,login,logout
 from google.oauth2 import id_token
 from google.auth.transport import requests
 
@@ -196,6 +195,7 @@ def event_create(request):
         return render(request, 'users/event_create.html')
 
 
+#logout view
 def logout(request):
     auth.logout(request)
     return HttpResponseRedirect('/users/')
