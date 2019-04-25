@@ -36,15 +36,10 @@ firebase_admin.initialize_app(cred, {
 def index(request):
     user = ""
     event_data = db.child("Created Events").get()
-    #print(event_data)
     dis_data = []
     event_detail = []
     for data in event_data.each():
-        #print(data.key())
-        #print(data.val())
         dis_data.append(data.val())
-    #event_data = event_data
-    #print(dis_data)
     print(dis_data)
     text = {}
     for i in dis_data:
@@ -52,19 +47,12 @@ def index(request):
         for v in text.values():
             for x in v.values():
                 event_detail.append(x)
-    #print(x)
     print(event_detail)
     if request.method == "POST":
-        
-        #a = user[idtoken]
-        #b = a['user']
-        #a= a['email']
-        #print(a)
-
         value = request.POST.get('sub_mit')
         try:
-            #user = request.session['user']
             user = request.session['user']
+            print(user)
             print("index")
             print(user['email'],user['registered'])
             user = user
@@ -95,9 +83,7 @@ def index(request):
             print("Else try")
             print(user['registered'])
             user_f = {'registered':True}
-            #authe.refresh(user['refreshToken'])
             return render(request,'index.html',{'value':value,'user':user ,'user_f':user_f['registered'],'event_detail':event_detail})
-            #return render(request,'index.html',{'value':value,'user':user})
         except:
             print("Else Except")
             value = 2
@@ -158,7 +144,6 @@ def register(request):
         else:
             message = "Password Didn't Match"
             return render(request,"index.html",{"messg":message})
-        #return render(request,"index.html")
     else:
         return render(request,"index.html")
 
