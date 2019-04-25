@@ -1,28 +1,18 @@
-<!DOCTYPE html>
-{% load static %}
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="HandheldFriendly" content="True" />
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
 
-    {% block extrahead %}
+  <title>My fake blog!</title>
 
-    {% endblock %}
-
-    <title>users</title>
-
-    <style>
-
-    </style>
-    </head>
-    <body>
-        <h1> THIS IS A USERS HOME PAGE</h1>
-        {% block body_block %}
-        
-        {% endblock %}
-    
-    
-    
-    </body>
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+    integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+    crossorigin="anonymous">
+</head>
+<body>
+  {% csrf_token %}
+  Welcome {{email}}
+</body>
 </html>
