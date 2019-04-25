@@ -112,7 +112,7 @@ def login(request):
             return HttpResponseRedirect("/users",{'msg':message})
     else:
         return HttpResponseRedirect("/users")
-
+#register view
 def register(request):
     if request.method == "POST":
         username=request.POST.get('username')
@@ -162,7 +162,7 @@ def data_feed(request):
         
     else:
         return render(request, 'users/feed.html')
-        
+#creating event        
 def event_create(request):
     if request.method == "POST":
         user = request.session['user']
