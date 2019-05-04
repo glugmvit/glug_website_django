@@ -19,10 +19,29 @@ db.connections.close_all()
 
 now = datetime.datetime.now()
 time = now.strftime("%Y-%m-%d %H:%M")
+print(time)
+curr_year = time[:4]
+print(curr_year)
+curr_month = time[5:7]
+print(curr_month)
+curr_date = time[8:10]
+print(curr_date)
+curr_hour = time[11:13]
+print(curr_hour)
+curr_min = time[14:17]
+print(curr_min)
+curr_time = {
+    'curr_year':int(curr_year),
+    'curr_month':int(curr_month),
+    'curr_date':int(curr_date),
+    'curr_hour':int(curr_hour),
+    'curr_min':int(curr_min),
+}
+
 
 BASE_DIRS = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 serviceAccount = os.path.join(
-    BASE_DIRS, "glugmvit-web-firebase-adminsdk-fcfa3-d4143f72cc.json")
+    BASE_DIRS, "glugmvit-web-firebase-adminsdk-9bz9b-0b162e3c22.json")
 
 config = {
     'apiKey': os.environ.get('APIKEY', ''),
@@ -181,7 +200,7 @@ def home(request):
             #print("If try")
             user_f = {'registered': True}
             #print(user)
-            return render(request, 'home.html', {'value': value, 'user': users_profile_info, 'user_f': user_f['registered'], 'event_detail': event_detail, 'time': time, 'event_detail_count': event_detail_count, 'event_reg_can': event_reg_can, 'event_reg_can_count': event_reg_can_count, 'event_app_list': event_app_list})
+            return render(request, 'home.html', {'value': value, 'user': users_profile_info, 'user_f': user_f['registered'], 'event_detail': event_detail, 'time': time, 'event_detail_count': event_detail_count, 'event_reg_can': event_reg_can, 'event_reg_can_count': event_reg_can_count, 'event_app_list': event_app_list,'curr_time':curr_time})
 
         else:
             if value == "Register Now":
@@ -190,7 +209,7 @@ def home(request):
                 value = 2
             user_f = {'registered': False}
             #print("If Except")
-            return render(request, 'home.html', {'value': value, 'user': "", 'user_f': user_f['registered'], 'event_detail': "", 'time': time, 'event_detail_count': event_detail_count, 'event_reg_can': event_reg_can, 'event_reg_can_count': event_reg_can_count})
+            return render(request, 'home.html', {'value': value, 'user': "", 'user_f': user_f['registered'], 'event_detail': "", 'time': time, 'event_detail_count': event_detail_count, 'event_reg_can': event_reg_can, 'event_reg_can_count': event_reg_can_count,'curr_time':curr_time})
     else:
         try:
             #user = ""
@@ -299,13 +318,13 @@ def home(request):
             #print("Else try")
             #print(users_profile['registered'])
             user_f = {'registered': True}
-            return render(request, 'home.html', {'value': value, 'user': users_profile_info, 'user_f': user_f['registered'], 'event_detail': event_detail, 'time': time, 'event_detail_count': event_detail_count, 'event_reg_can': event_reg_can, 'event_reg_can_count': event_reg_can_count, 'event_app_list': event_app_list})
+            return render(request, 'home.html', {'value': value, 'user': users_profile_info, 'user_f': user_f['registered'], 'event_detail': event_detail, 'time': time, 'event_detail_count': event_detail_count, 'event_reg_can': event_reg_can, 'event_reg_can_count': event_reg_can_count, 'event_app_list': event_app_list,'curr_time':curr_time})
         else:
             #print("Else Except")
             value = 2
             user_f = {'registered': False}
             #print(user_f['registered'])
-            return render(request, 'home.html', {'value': value, 'user_f': user_f['registered'], 'event_detail': event_detail, 'time': time, 'event_detail_count': event_detail_count, 'event_reg_can': event_reg_can, 'event_reg_can_count': event_reg_can_count})
+            return render(request, 'home.html', {'value': value, 'user_f': user_f['registered'], 'event_detail': event_detail, 'time': time, 'event_detail_count': event_detail_count, 'event_reg_can': event_reg_can, 'event_reg_can_count': event_reg_can_count,'curr_time':curr_time})
 
 
 def login(request):
@@ -354,7 +373,7 @@ def register(request):
         contact_number = request.POST.get('contact_number')
         password = request.POST.get('password')
         confirm_password = request.POST.get('password')
-        name = first_name + str(' ') + last_name
+        name = str(first_name) + ' ' + str(last_name)
         if password == confirm_password:
             try:
                 new_user = authe.create_user_with_email_and_password(
@@ -647,13 +666,16 @@ def info(request):
             else:
                 found = 0
         request.session['found'] = found
+        print(created_at)
+        print(event_time)
+
         try:
             users_profile_info = request.session['users_profile_info']
             return render(request, 'events/info.html', {'contact_number': contact_number,
                                                         'created_at': created_at,
                                                         'created_by_email': created_by_email,
                                                         'created_by_name':created_by_name,
-                                                        'date': date,
+                                                        'date': int(date),
                                                         'alt_name':alt_name,
                                                         'alt_email':alt_email,
                                                         'alt_contact':alt_contact,
@@ -662,15 +684,25 @@ def info(request):
                                                         'event_name': event_name,
                                                         'event_price': int(event_price),
                                                         'event_time': event_time,
+                                                        #'event_hour':int(event_time[:2]),
+                                                        #'event_min':int(event_time[3:5]),
                                                         'event_venue': event_venue,
                                                         'img_event_url': img_event_url,
-                                                        'month': month, 'month_str': month_str, 'tag': tag, 'year': year, 'event_app_list': event_app_list, 'user': users_profile_info,'found':found})
+                                                        'month': int(month), 
+                                                        'month_str': month_str, 
+                                                        'tag': tag, 
+                                                        'year': int(year), 
+                                                        'event_app_list': event_app_list,
+                                                        'user': users_profile_info,
+                                                        'found':found,
+                                                        'curr_time':curr_time,
+                                                        })
         except:
                 return render(request, 'events/info.html', {'contact_number': contact_number,
                                                         'created_at': created_at,
                                                         'created_by_name':created_by_name,
                                                         'created_by_email': created_by_email,
-                                                        'date': date,
+                                                        'date': int(date),
                                                         'alt_name':alt_name,
                                                         'alt_email':alt_email,
                                                         'alt_contact':alt_contact,
@@ -679,9 +711,17 @@ def info(request):
                                                         'event_name': event_name,
                                                         'event_price': int(event_price),
                                                         'event_time': event_time,
+                                                        #'event_hour':int(event_time[:2]),
+                                                        #'event_min':int(event_time[3:5]),
                                                         'event_venue': event_venue,
                                                         'img_event_url': img_event_url,
-                                                        'month': month, 'month_str': month_str, 'tag': tag, 'year': year, 'event_app_list': event_app_list,'found':found})
+                                                        'month': int(month), 
+                                                        'month_str': month_str, 
+                                                        'tag': tag, 'year': int(year), 
+                                                        'event_app_list': event_app_list,
+                                                        'found':found,
+                                                        'curr_time':curr_time,
+                                                        })
 
     else:
         return HttpResponseRedirect('/')
@@ -697,12 +737,15 @@ def dashboard_edit(request):
         first_name = request.POST.get('first_name')
         last_name = request.POST.get('last_name')
         try:
-            dp = request.FILES.get['dp']
+            dp = request.FILES['dp']
             fs = FileSystemStorage()
             filename = fs.save(dp.name, dp)
             dp_url = fs.url(filename)
         except:
-            dp_url =""
+            try:
+                dp_url = users_profile_info['dp_url']
+            except:
+                dp_url = ""
             
         dob = request.POST.get('dob')
         usn = request.POST.get('usn')
@@ -737,10 +780,10 @@ def dashboard_edit(request):
         #users_profile = request.session['users_profile']
         #request.session['users_profile'] = users_profile
         #print(users_profile)
-        return render(request, 'users/dashboard.html',{'user':users_profile_info})
+        return render(request, 'users/dashboard.html',{'user':users_profile_info,'curr_time':curr_time})
     else:
         users_profile_info = request.session['users_profile_info']
-        return render(request, 'users/dashboard_edit.html',{'user':users_profile_info})
+        return render(request, 'users/dashboard_edit.html',{'user':users_profile_info,'curr_time':curr_time})
 
 
 def dashboard(request):
@@ -755,10 +798,40 @@ def dashboard(request):
     if request.method == "POST":
         return HttpResponseRedirect( '/')
     else:
-        return render(request, 'users/dashboard.html',{'user':users_profile_info,'total_user_count':total_user_count})
+        return render(request, 'users/dashboard.html',{'user':users_profile_info,'total_user_count':total_user_count,'curr_time':curr_time})
 
 def resetpassword(request):
-    users_profile_info = request.session['users_profile_info']
-    authe.send_password_reset_email(users_profile_info['email'])
-    auth.logout(request)
-    return HttpResponseRedirect('/')
+    try:
+        users_profile_info = request.session['users_profile_info']
+        authe.send_password_reset_email(users_profile_info['email'])
+        auth.logout(request)
+        return HttpResponseRedirect('/')
+    except:
+        if request.method == "POST":
+            email_reset = request.POST.get('email')
+            authe.send_password_reset_email(email_reset)
+            auth.logout(request)
+            return HttpResponseRedirect('/')
+        else:
+            return render(request, 'resetpassword.html',)
+
+def verifyemail(request):
+    users_profile_info=request.session['users_profile_info']
+    localId = request.session['localId']
+    if request.method == "POST":
+        a = authe.get_account_info(users_profile_info['idToken'])
+        data = {'emailVerified':a['users'][0]['emailVerified']}
+        print(data)
+        db.child('users_profile').child(localId).child('details').update(data)
+        authe.refresh(user['refreshToken'])
+
+        #request.session['users_profile'] = users_profile
+        return HttpResponseRedirect("/")
+    else:
+        a = authe.get_account_info(users_profile_info['idToken'])
+        data = {'emailVerified':a['users'][0]['emailVerified']}
+        print(data)
+        db.child('users_profile').child(localId).child('details').update(data)
+        #authe.refresh(users_profile['refreshToken'])
+        return HttpResponseRedirect("/")
+    

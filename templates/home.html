@@ -51,6 +51,8 @@
                       <input data-aos="fade-up" data-aos-delay="300" class="btn btn-outline-danger py-3 px-3" type="" name="sub_mit" target="{% url 'users:event_create' %}" value="Create Event" onclick="document.getElementById( 'event_create_section' ).scrollIntoView();" disabled/>
                     </p>
                     <p data-aos="fade-up" data-aos-delay="250">Check your mail to verify your Account</p>
+                    <p data-aos="fade-up" data-aos-delay="250">Already Vrified <a href="{% url 'users:verifyemail' %}">Click Here</></p>
+
                   
                     {% endif %}
                   {% endif %}
@@ -102,7 +104,7 @@
                       <div class="form-group">
                         <input type="submit" class="btn btn-primary btn-pill" target="{% url 'users:login' %}" value="Login">
                       </div>
-                      <!--<a href="{% url 'users:resetpassword'%}"><p style="color:blue;">Forgot Password &nbsp;<span class="icon-error_outline" style="color:red;"></span></p>-->
+                      <a href="{% url 'users:resetpassword'%}"><p style="color:blue;">Forgot Password &nbsp;<span class="icon-error_outline" style="color:red;"></span></p>
                     </form>
                   </div>
                   {% endif %}
@@ -463,15 +465,19 @@
         </div>
         <div class="row mb-5 align-items-center">
           <div class="col-lg-7 mb-5" data-aos="fade-up" data-aos-delay="100">
-            <img src="/static/images/nasa1.jpg" alt="Image" class="img-fluid">
+            <img src="/static/images/mozilla.jpeg" alt="Image" class="img-fluid">
           </div>
           <div class="col-lg-4 ml-auto" data-aos="fade-up" data-aos-delay="200">
-            <h2 class="text-black mb-4">Nasa Space Apps</h2>
-        <!--    <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem maxime nam porro possimus fugiat quo molestiae illo.</p>-->
+            <h2 class="text-black mb-4">moz://a Voice Sprint 2019</h2>
+             <p class="mb-4">Mozilla’s Common Voice is the project that aims to unlock and open 
+             the voice ecosystem. It needs YOUR help to advance English voice collection and get 
+             to the next level. In order for a language to be usable by speech recognition engines 
+             we need at least 2000 hours....
+             <a href="https://blog.glugmvit.com/mozilla-sprint/">Read More</a></p>
 
             <div class="d-flex align-items-center custom-icon-wrap mb-3">
               <span class="custom-icon-inner mr-3"><span class="icon icon-graduation-cap"></span></span>
-              <div><h3 class="m-0">224 Participations</h3></div>
+              <div><h3 class="m-0">67 Participations</h3></div>
             </div>
 
             <!--<div class="d-flex align-items-center custom-icon-wrap">
@@ -487,8 +493,8 @@
             <img src="/static/images/team1.jpeg" alt="Image" class="img-fluid">
           </div>
           <div class="col-lg-4 mr-auto order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
-            <h2 class="text-black mb-4">Unity Game Development Workshop</h2>
-          <!--  <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem maxime nam porro possimus fugiat quo molestiae illo.</p>-->
+            <h2 class="text-black mb-4">Unity Game Development</h2>
+            <p class="mb-4">The workshop was to explain the workflow of Unity 3D for Windows Desktop game development and solve the bugs in the code to complete and play...<a href="https://blog.glugmvit.com/localhost-unity/">Read More</a></p>
 
             <div class="d-flex align-items-center custom-icon-wrap mb-3">
               <span class="custom-icon-inner mr-3"><span class="icon icon-graduation-cap"></span></span>
@@ -505,23 +511,51 @@
 
         <div class="row mb-5 align-items-center">
           <div class="col-lg-7 mb-5" data-aos="fade-up" data-aos-delay="100">
-            <img src="/static/images/team3.jpeg" alt="Image" class="img-fluid">
+            <img src="/static/images/nasa1.jpg" alt="Image" class="img-fluid">
           </div>
           <div class="col-lg-4 ml-auto" data-aos="fade-up" data-aos-delay="200">
+            <h2 class="text-black mb-4">Nasa Space Apps</h2>
+              <p class="mb-4">A hackathon that happens world wide within 48 hours in different countries. Coders, scientists, designers, storytellers, makers, builders, technologists and enthusiasts come together and work on the challenges we face on Earth and even in space...<a href="https://blog.glugmvit.com/space-apps/">Read More</a></p>
+
+            <div class="d-flex align-items-center custom-icon-wrap mb-3">
+              <span class="custom-icon-inner mr-3"><span class="icon icon-graduation-cap"></span></span>
+              <div><h3 class="m-0">224 Participations</h3></div>
+            </div>
+
+            <!--<div class="d-flex align-items-center custom-icon-wrap">
+              <span class="custom-icon-inner mr-3"><span class="icon icon-university"></span></span>
+              <div><h3 class="m-0">150 Universities Worldwide</h3></div>
+            </div>
+            -->
+          </div>
+        </div>
+
+
+
+        <div class="row mb-5 align-items-center">
+          <div class="col-lg-7 mb-5 order-1 order-lg-2" data-aos="fade-up" data-aos-delay="100">
+            <img src="/static/images/team3.jpeg" alt="Image" class="img-fluid">
+          </div>
+          <div class="col-lg-4 mr-auto order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
             <h2 class="text-black mb-4">Winner Ideathon</h2>
             <p class="mb-4">Designed a new Vodafone youth app with AI chatbot, new features relevant offers for customers using machine learning and also clustering</p>
 
-            <div class="d-flex align-items-center custom-icon-wrap mb-3">
-             <!-- <span class="custom-icon-inner mr-3"><span class="icon icon-graduation-cap"></span></span>
-              <div><h3 class="m-0"></h3></div>-->
-            </div>
+            <!--<div class="d-flex align-items-center custom-icon-wrap mb-3">
+              <span class="custom-icon-inner mr-3"><span class="icon icon-graduation-cap"></span></span>
+              <div><h3 class="m-0">196 Participations</h3></div>
+            </div>-->
 
-            <div class="d-flex align-items-center custom-icon-wrap">
-              <!--<span class="custom-icon-inner mr-3"><span class="icon icon-university"></span></span>
-              <div><h3 class="m-0"></h3></div>-->
+            <!--<div class="d-flex align-items-center custom-icon-wrap">
+              <span class="custom-icon-inner mr-3"><span class="icon icon-university"></span></span>
+              <div><h3 class="m-0">150 Universities Worldwide</h3></div>
             </div>
+            -->
           </div>
         </div>
+
+        
+
+       
       </div>
     </div>
 
