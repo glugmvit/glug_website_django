@@ -14,23 +14,24 @@ from django.core.files.storage import FileSystemStorage
 import os
 #from glug.pyrebase_settings import db, authe
 
+from django import db
+db.connections.close_all()
 
 now = datetime.datetime.now()
 time = now.strftime("%Y-%m-%d %H:%M")
 
-#BASE_DIRS = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-#serviceAccount = os.path.join(BASE_DIRS, "glugmvit-web-firebase-adminsdk-fcfa3-d4143f72cc.json")
+BASE_DIRS = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+serviceAccount = os.path.join(
+    BASE_DIRS, "glugmvit-web-firebase-adminsdk-fcfa3-d4143f72cc.json")
 
 config = {
-    'apiKey': "AIzaSyBmZkSULfm_sKjeQW646OyEUAU_DHCLdEw",
-    'authDomain': "glugmvit-web.firebaseapp.com",
-    'databaseURL': "https://glugmvit-web.firebaseio.com",
-    'projectId': "glugmvit-web",
-    'storageBucket': "glugmvit-web.appspot.com",
-    'messagingSenderId': "198252493",
-    'serviceAccount': settings.GOOGLE_APPLICATION_CREDENTIALS
-    # 'serviceAccount': "glugmvit-web-firebase-adminsdk-fcfa3-d4143f72cc.json",
-
+    'apiKey': os.environ.get('APIKEY', ''),
+    'authDomain': os.environ.get('AUTHDOMAIN', ''),
+    'databaseURL': os.environ.get('DATA_BASE_URL', ''),
+    'projectId': os.environ.get('PROJECT_ID', ''),
+    'storageBucket': os.environ.get('STORAGE_BUCKET', ''),
+    'messagingSenderId': os.environ.get('messagingSenderId', ''),
+    'serviceAccount': "glugmvit-web-firebase-adminsdk-9bz9b-0b162e3c22.json",
 }
 firebase = pyrebase.initialize_app(config)
 authe = firebase.auth()

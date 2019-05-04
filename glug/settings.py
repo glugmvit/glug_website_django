@@ -19,9 +19,12 @@ TEMPLATE_DIR = os.path.join(BASE_DIR,'templates/')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 # 
-GOOGLE_APPLICATION_CREDENTIALS=os.path.join(BASE_DIR,"glugmvit-web-firebase-adminsdk-fcfa3-d4143f72cc.json")
+# test
+
+#GOOGLE_APPLICATION_CREDENTIALS=os.path.join(BASE_DIR,"glugmvit-web-firebase-adminsdk-fcfa3-d4143f72cc.json")
+
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'azo$^1s0_el845m*o!7mujctcn)8j_72usvy=jp)l=5oh!a0)$'
+SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -81,6 +84,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        
     }
 }
 
@@ -131,3 +135,5 @@ MEDIA_URL = '/media/'
 # Configure Django App for Heroku.
 import django_heroku
 django_heroku.settings(locals())
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.file'
