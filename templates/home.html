@@ -8,7 +8,7 @@
 {% load static %}
 {% block content %}
     <div class="intro-section" id="home-section">
-      
+
       <div class="slide-1" style="background-image: url('/static/images/hero_1.jpg');" data-stellar-background-ratio="0.5">
         <br>
         <div class="container">
@@ -19,21 +19,21 @@
                   <h1  data-aos="fade-up" data-aos-delay="100">GNU Linux Users Group
                   <p><span class="icon-map-marker"></span>&nbsp; Sir M. Visvesvaraya Institute of Technology</p></h1>
                   <p class="mb-4"  data-aos="fade-up" data-aos-delay="200">Open to any free software enthusiasts. This community has been always described as place for learning and sharing, a place to evolve and grow together.</p>
-                  
+
                   <form action="{% url 'users:home' %}" method="post" class="">
-                  
+
                   {% csrf_token %}
-                  
-                    
+
+
                   {% if user.registered == False or user_f == False %}
-                  
+
                     {% if value == 2 %}
                       <a href="{% url 'users:register' %}"><input data-aos="fade-up" data-aos-delay="300" class="btn btn-primary py-3 px-5 btn-pill" type="button" name="" value="Register Now"/></a>
-                    {% endif %} 
+                    {% endif %}
                   {% endif %}
-                  
+
                   {% if user.registered == False or user_f == False  %}
-                  
+
                     {% if value == 1 %}
                       <input data-aos="fade-up" data-aos-delay="300" class="btn btn-primary py-3 px-5 btn-pill" type="submit" name="sub_mit" value="Login"/>
                     {% endif %}
@@ -51,10 +51,10 @@
                       <input data-aos="fade-up" data-aos-delay="300" class="btn btn-outline-danger py-3 px-3" type="" name="sub_mit" target="{% url 'users:event_create' %}" value="Create Event" onclick="document.getElementById( 'event_create_section' ).scrollIntoView();" disabled/>
                     </p>
                     <p data-aos="fade-up" data-aos-delay="250">Check your mail to verify your Account</p>
-                  
+
                     {% endif %}
                   {% endif %}
-                  
+
                 </div>
 
                 {% if user_f == False or user.registered == False %}
@@ -86,7 +86,7 @@
                   </div>
                   {% endif %}
                 {% endif %}
-                
+
                 {% if user_f == False or user.registered == False %}
                   {% if value == 2 %}
                   <div class="col-lg-5 ml-auto" data-aos="fade-up" data-aos-delay="500">
@@ -107,9 +107,9 @@
                   </div>
                   {% endif %}
                 {% endif %}
-                
 
-            
+
+
 
 
               </div>
@@ -119,7 +119,7 @@
       </div>
     </div>
 
-    
+
 
       {% if user.registered == True %}
         {% if value == 3 %}
@@ -144,13 +144,13 @@
                   </div>
                   <div class="form-group row">
                     <div class="col-md-6 mb-3 mb-lg-0">
-                      Upload a picture related to Event : 
+                      Upload a picture related to Event :
                     </div>
                     <div class="col-md-6">
                       <input type="file" name="img_event" class="form-control" placeholder="">
                     </div>
                   </div>
-                  
+
                   <div class="form-group row">
                     <div class="col-md-4 mb-3 mb-lg-0">
                       <input type="text" name="event_date" class="form-control datepicker" placeholder="Click to Select a date" >
@@ -174,7 +174,7 @@
                       <input type="text" name="event_headline" class="form-control" placeholder="Brief headline to be displayed... in 100 words" maxlength="100" required>
                     </div>
                   </div>
-                  
+
                   <div class="form-group row">
                     <div class="col-md-12">
                       <textarea class="form-control" name="event_details" cols="30" rows="10" placeholder="Write Details ot the Event..."></textarea>
@@ -192,7 +192,7 @@
                       <input type="email" class="form-control" placeholder="{{ user.email }}" disabled/>
                     </div>
                   </div>
-                  
+
                   <div class="form-group row">
                     <div class="col-md-12">
                       <input type="number" name="contact_number" class="form-control" placeholder="Enter the Contact number" required>
@@ -218,11 +218,11 @@
 
               {% endif %}
               {% endif %}
-    
-    
+
+
     {% if event_detail == NULL or event_detail == None %}
     {% else %}
-    
+
     <div class="site-section courses-title" id="courses-section" style="background-color:#F5F5F5">
       <div class="container">
         <div class="row mb-5 justify-content-center">
@@ -277,27 +277,27 @@
                   <input type="text" name="alt_email" value="{{ item.alt_email }}" hidden/>
                   <input type="text" name="alt_contact" value="{{ item.alt_contact }}" hidden/>
 
-                  
+
                     <!--<div class="py-3 px-4"><span class="btn btn-outline-info">More Info</span></div></a>-->
                     <div class="py-3 px-4">
                         <input type="submit" class="btn btn-outline-info" name="ev_submit" value="info" />
                         {% if user.email %}
-                        
+
                         {% else %}
                         <span style="color:red;margin-left:70px;">Login to Apply</span>
                         {% endif %}
-                        
-                        
+
+
                     </div>
                 </form>
               </div>
             </div>
             {% endfor %}
-            
+
 
           </div>
 
-         
+
 
         </div>
         <div class="row justify-content-center">
@@ -441,7 +441,7 @@
 
           </div>
 
-         
+
 
         </div>
         <div class="row justify-content-center">
@@ -467,9 +467,9 @@
           </div>
           <div class="col-lg-4 ml-auto" data-aos="fade-up" data-aos-delay="200">
             <h2 class="text-black mb-4">moz://a Voice Sprint 2019</h2>
-             <p class="mb-4">Mozilla’s Common Voice is the project that aims to unlock and open 
-             the voice ecosystem. It needs YOUR help to advance English voice collection and get 
-             to the next level. In order for a language to be usable by speech recognition engines 
+             <p class="mb-4">Mozilla’s Common Voice is the project that aims to unlock and open
+             the voice ecosystem. It needs YOUR help to advance English voice collection and get
+             to the next level. In order for a language to be usable by speech recognition engines
              we need at least 2000 hours....
              <a href="https://blog.glugmvit.com/mozilla-sprint/">Read More</a></p>
 
@@ -541,7 +541,7 @@
             <p class="mb-5">We constitue a team of clear sense of purpose,measurable objectives</p>
           </div>
         </div>
-        
+
         <div class="row" data-aos="fade-up" data-aos-delay="500" style="margin-top:-100px;">
           <div class="owl-carousel col-12 nonloop-block-14">
             <div class="course bg-white h-90 align-self-stretch">
@@ -550,7 +550,7 @@
                 <div class="py-2">
                   <h3 class="text-black"><a href="https://www.absingh.com">Abhijeet Singh</a></h3>
                   <p class="position">GLUG Member</p>
-                  
+
                   <span style="font-size:30px;">
                     <a href="https://www.linkedin.com/in/thatniceman/">
                       <span class="icon-linkedin-square"></span>
@@ -565,7 +565,7 @@
             </div>
 
 
-            
+
             <div class="course bg-white h-90 align-self-stretch">
               <div class="teacher text-center">
                 <img src="/static/images/vipul.jpg" alt="Image" class="img-fluid w-50 rounded-circle mx-auto mb-4">
@@ -580,7 +580,7 @@
                       <span class="icon-github"></span>
                     </a>
                   </span>
-                  
+
                   <p>Machine Learning | Data Analytics | Programming</p><br>
                 </div>
               </div>
@@ -628,12 +628,12 @@
             </div>
 
 
-            
 
-            
+
+
           </div>
 
-         
+
         </div>
         <div class="row justify-content-center" style="margin-top:-100px;">
           <div class="col-7 text-center">
@@ -657,7 +657,7 @@
             <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam repellat aut neque! Doloribus sunt non aut reiciendis, vel recusandae obcaecati hic dicta repudiandae in quas quibusdam ullam, illum sed veniam!</p>
           </div>
         </div>
-        
+
 
         <div class="row">
           <div class="owl-carousel col-12 nonloop-block-14">
@@ -695,7 +695,7 @@
             </div>
           </div>
 
-          
+
           </div>
         </div>
       </div>
@@ -786,20 +786,35 @@
         </div>
         <div class="row justify-content-center align-items-center">
           <div class="col-md-3 text-center testimony">
-            <img src="/static/images/MSP_logo.jpeg" alt="Image" class="img-fluid w-75 mb-4 ">
+            <a href="https://studentpartners.microsoft.com/en-us" target="_blank"><img src="/static/images/MSP_logo.jpeg" alt="Image" class="img-fluid w-75 mb-4 "></a>
             <img src="/static/images/MSP_word.jpeg" alt="Image" class="img-fluid w-75 mb-4 ">
           </div>
           <div class="col-md-1 text-center testimony">
             <p></p>
           </div>
           <div class="col-md-3 text-center testimony">
-            <img src="/static/images/mozilla_india.png" alt="Image" class="img-fluid mb-4">
+            <a href="https://mozillaindia.org" target="_blank"><img src="/static/images/mozilla_india.png" alt="Image" class="img-fluid mb-4"></a>
           </div>
           <div class="col-md-1 text-center testimony">
             <p></p>
           </div>
           <div class="col-md-3 text-center testimony">
-            <img src="/static/images/mlh.png" alt="Image" class="img-fluid mb-4">
+            <a href="https://localhost.mlh.io" target="_blank"><img src="/static/images/mlh.png" alt="Image" class="img-fluid mb-4"></a>
+          </div>
+          <div class="col-md-1 text-center testimony">
+            <p></p>
+          </div>
+          <div class="col-md-3 text-center testimony">
+            <a href="https://fsmk.org/" target="_blank"><img src="/static/images/fsmk.jpeg" alt="Image" class="img-fluid mb-4"></a>
+          </div>
+          <div class="col-md-1 text-center testimony">
+            <p></p>
+          </div>
+          <div class="col-md-3 text-center testimony">
+            <a href="https://www.girlscript.tech/" target="_blank"><img src="/static/images/girlscript.jepg" alt="Image" class="img-fluid mb-4"></a>
+          </div>
+          <div class="col-md-1 text-center testimony">
+            <p></p>
           </div>
         </div>
       </div>
@@ -813,10 +828,10 @@
           <div class="col-md-7">
 
 
-            
+
             <h2 class="section-title mb-3">Message Us</h2>
             <p class="mb-5"></p>
-          
+
             <form method="post" action="https://formspree.io/glugmvit@gmail.com" data-aos="fade">
               <div class="form-group row">
                 <div class="col-md-6 mb-3 mb-lg-0">
@@ -861,9 +876,9 @@
         </div>
       </div>
     </div>
-    
+
      </div>
-    
-  
-  
+
+
+
 {% endblock content %}
